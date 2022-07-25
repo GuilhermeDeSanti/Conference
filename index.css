@@ -1,0 +1,30 @@
+header.masthead {
+    text-align: center;
+    color: white;
+    background-image: url(https://dti.unilab.edu.br/wp-content/uploads/2020/03/webconferencia-011-1.jpg);
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    background-size: cover;
+}
+
+header.masthead .intro-text{
+    padding-top: 150px;
+    padding-bottom: 100px;
+}
+
+header.masthead .intro-text .intro-lead-in {
+    font-size: 22px;
+    font-family: italic;
+    line-height: 22px;
+    margin-bottom: 25px;
+    font-family: 'Droid serif', 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+header.masthead .intro-text .intro-heading {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 50px;
+    margin-bottom: 25px;
+    font-family: 'Montserrat', 'Helvetica Neue', Helvetica, sans-serif;
+}
