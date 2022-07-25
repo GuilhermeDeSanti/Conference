@@ -28,3 +28,24 @@ header.masthead .intro-text .intro-heading {
     margin-bottom: 25px;
     font-family: 'Montserrat', 'Helvetica Neue', Helvetica, sans-serif;
 }
+
+.btn {
+    font-family: 'Montserrat', 'Helvetica Neue', Helvetica, sans-serif;
+    font-weight: 700;
+}
+
+.btn-xl {
+    font-size: 18px;
+    padding: 20px 40px;
+}
+
+.btn-primary {
+    background-color: #428bca;
+    border-color: #428bca;
+}
+
+.btn-primary:active, .btn-primary:focus, .btn-primary:hover {
+    background-color: #3677b1 !important;
+    border-color: #3677b1 !important;
+    color: white;
+}
