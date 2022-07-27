@@ -42,17 +42,17 @@ window.onload = function () {
                     swal({title: `${result.value.err_message}`})
                 }
             }
-        })
-    })
+        });
+    });
 
 
-};
+
 
 
 ( async () => {
-    const renderSpeakers = document.getElementById("renderSpeakers")
-    let txtSpeakers = ""
-    const response = await fetch(`${urlBase}/conferences/1/speakers`)
+    const renderSpeakers = document.getElementById("renderSpeakers");
+    let txtSpeakers = "";
+    const response = await fetch(`${urlBase}/conferences/1/speakers`);
     const speakers = await response.json();
 
     
@@ -60,9 +60,9 @@ window.onload = function () {
         txtSpeakers += `
         <div class="col-sm-4">
          <div class"team-member">
-            <img class="mx-auto rounded-circle viewSpeaker" src="${speaker.foto}" alt="" id="${speaker.idSpeaker}">
+            <img class="mx-auto rounded-circle viewSpeaker" src="${speaker.foto}" alt="img" id="${speaker.idSpeaker}">
             <p class="text-muted">${speaker.cargo}</p>
-            <ul class="list-inline social-buttons">`
+            <ul class="list-inline social-buttons">`;
 
             if (speaker.twitter!==null) {
                 txtSpeakers += `
@@ -70,7 +70,7 @@ window.onload = function () {
                  <a href="${speaker.twitter}" target="_blank">
                     <i class="fab fa-twitter"></i>
                 </a>
-                </li>`
+                </li>`;
             }
             if (speaker.facebook!==null) {
                 txtSpeakers += `
@@ -87,14 +87,14 @@ window.onload = function () {
                     <a href="${speaker.linkedin}" target="_blank">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
-                </li>`
+                </li>`;
             }
 
             txtSpeakers += `
             </ul>
         </div>
     </div>
-    `
+    `;
 
     const btnView = document.getElementsByClassName("viewSpeaker")
     for (let i = 0; i < btnView.length; i++) {
@@ -113,10 +113,28 @@ window.onload = function () {
         imageHeight: 400,
         imageAlt: 'Foto do orador',
         animation: false
-    })
+    });
 
     renderSpeakers.innerHTML = txtSpeakers;
-}) ()
-    
+})()
+}
 
 
+    ( async () => {
+        const renderSponsors = document.getElementById("renderSponsors");
+        let txtSponsors = "";
+        const response = await fetch(`${urlBase}/conferences/1/sponsors`);
+        const sponsors = await response.json();
+
+        for (const sponsor of sponsors) {
+            txtSponsors += `
+            <div class="col-md-3 col-sm-6">
+            <a href="${sponsor.link}" target="_blank">
+            <img class="img-fluid d-block mx-auto"
+                src="${sponsor.logo}"
+                alt="${sponsor.nome}">
+            </a>
+            </div>`
+        }
+        renderSponsors.innerHTML = txtSponsors
+    }) ()
