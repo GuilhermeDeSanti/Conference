@@ -1,3 +1,5 @@
+var baseUrl = "{{('/conferences/1/speakers')}}";
+
 window.onload = function () {
     const btnRegister = document.getElementById("btnRegister")
     btnRegister.addEventListener("click", function() {
@@ -14,11 +16,11 @@ window.onload = function () {
             cancelButtonText: "Cancelar",
             showLoaderOnConfirm: true,
             preConfirm: () => {
-                const name = document.getElementById('txtName').value
-                const email = document.getElementById('txtEmail').value
-                const url_base = "https://fcawebbook.herokuapp.com"
-                return
-                 fetch(`${url_base}/conferences/1/participants/${email}`,{
+                const name = document.getElementById('txtName').value;
+                const email = document.getElementById('txtEmail').value;
+                const url_base = "https://fcawebbook.herokuapp.com";
+                return;
+                 fetch(`${url_Base}/conferences/1/participants/${email}`,{
                     headers: { "Content-Type": "application/x-www-form-urlencoded" },
                     method: "POST",
                     body: `nomeparticipant=${name}`
@@ -37,9 +39,9 @@ window.onload = function () {
         }).then(result => {
             if (result.value) {
                 if (!result.value.err_code) {
-                    swal({title: "Inscrição feita com sucesso!"})
+                    swal({title: "Inscrição feita com sucesso!"});
                 } else {
-                    swal({title: `${result.value.err_message}`})
+                    swal({title: `${result.value.err_message}`});
                 }
             }
         });
@@ -53,6 +55,7 @@ window.onload = function () {
     const renderSpeakers = document.getElementById("renderSpeakers");
     let txtSpeakers = "";
     const response = await fetch(`${urlBase}/conferences/1/speakers`);
+    newBase = url.substring(url.lastIndexOf("") + 1, url.length);
     const speakers = await response.json();
 
     
@@ -78,7 +81,7 @@ window.onload = function () {
                     <a href="${speaker.facebook}" target="_blank">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                </li>`
+                </li>`;
             }
 
             if (speaker.linkedin!==null) {
@@ -96,13 +99,13 @@ window.onload = function () {
     </div>
     `;
 
-    const btnView = document.getElementsByClassName("viewSpeaker")
+    const btnView = document.getElementsByClassName("viewSpeaker");
     for (let i = 0; i < btnView.length; i++) {
         btnView[i].addEventListener("click", () => {
             if (speaker.idSpeaker == btnView[i].getAttribute("id")) {
                 //janela modal
             }
-        })
+        });
     }
     }
     swal ({
@@ -116,7 +119,7 @@ window.onload = function () {
     });
 
     renderSpeakers.innerHTML = txtSpeakers;
-})()
+})();
 }
 
 
@@ -124,6 +127,7 @@ window.onload = function () {
         const renderSponsors = document.getElementById("renderSponsors");
         let txtSponsors = "";
         const response = await fetch(`${urlBase}/conferences/1/sponsors`);
+        newBase = url.substring(url.lastIndexOf("") + 1, url.length);
         const sponsors = await response.json();
 
         for (const sponsor of sponsors) {
@@ -134,7 +138,27 @@ window.onload = function () {
                 src="${sponsor.logo}"
                 alt="${sponsor.nome}">
             </a>
-            </div>`
+            </div>`;
         }
-        renderSponsors.innerHTML = txtSponsors
-    }) ()
+        renderSponsors.innerHTML = txtSponsors;
+    }) ();
+
+    const contactForm = document.getElementById("contactForm");
+    contactForm.addEventListener("submit", async () => {
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const message = document.getElementById("message").value;
+        const response = await fetch(`${urlBase}/contacts/emails`, {
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            method: "POST",
+            body: `email=${email}&name=${name}&subject=${message}`
+        });
+        const result = await response.json();
+        if (result.value.success) {
+            swal('Envio de mensagem', result.value.message.pt, 'success');
+        } else {
+            // Exibir modal com erro
+        }
+    });

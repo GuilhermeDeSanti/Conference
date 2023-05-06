@@ -169,16 +169,16 @@
                         <i class="fas fa-globe fa-stack-1x fa-inverse"></i>
                     </span>
                     <h4 class="topic-heading">Computação Ubíqua</h4>
-                    <p class="text-muted">Expandir a Web ...</p>
+                    <p class="text-muted">Expandir a Web para fora do computador e ligá-la à internet das coisas!</p>
                 </div>
                 <div class="col-md-6">
                     <!-- Tópico n. 2 -->
                     <span class="fa-stack fa-4x">
                         <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fas fa-globe fa-stack-1x fa-inverse"></i>
+                        <i class="fas fa-laptop-code fa-stack-1x fa-inverse"></i>
                     </span>
-                    <h4 class="topic-heading2">Computação Ubíqua</h4>
-                    <p class="text-muted">Expandir a Web ...</p>
+                    <h4 class="topic-heading2">Responsividade</h4>
+                    <p class="text-muted">Adaptar as aplicações Web a múltiplos dispositivos e torná-las mais responsivas em termos de performance!</p>
                 </div>
             </div>
         </div>
@@ -190,7 +190,7 @@
             <div class="col-sm-4">
                 <div class="team-member">
                     <!-- Orador n. 1 -->
-                    <img class="mx-auto rounded-circle" id="${speaker.idSpeaker}" src="https://cdn.icon-icons.com/icons2/2643/PNG/512/female_woman_user_people_person_avatar_black_tone_icon_159361.png" alt="img" height="260px">
+                    <img class="mx-auto rounded-circle" id="${speaker.idSpeaker}" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzyALOcLp4ykOIC4bim8L0xZIvgfLLZEo-mg&usqp=CAU" alt="img" height="260px">
                     <h4>Lorem ipsum</h4>
                     <p class="text-muted">Lead Designer</p>
                     <ul class="list-inline social-buttons">
@@ -289,6 +289,60 @@
     </section>
     <section id="contacts">
         <!--Formulario para contatos e maps-->
+        <div class="row">
+            <form id="contactForm" name="sendMessage">
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- Campo nome -->
+                        <div class="form-group">
+                            <input
+                            id="name"
+                            class="form-control"
+                            type="text"
+                            placeholder="o seu nome" required>
+                        </div>
+                        <!-- Campo e-mail-->
+                        <div class="form-group">
+                            <input
+                            id="email"
+                            class="form-control"
+                            type="text"
+                            placeholder="o seu email" required>
+                        </div>
+                        <!-- Campo telemóvel -->
+                        <div class="form-group">
+                            <input
+                            id="phone"
+                            class="form-control"
+                            type="text"
+                            placeholder="o seu número" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <!-- Campo mensagem -->
+                        <div class="form-group">
+                            <input
+                            id="message"
+                            class="form-control"
+                            type="text"
+                            placeholder="insira sua mensagem" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 text-center">
+                        <!-- Botão de envio da mensagem -->
+                        <div class="col-lg-12 text-center">
+                            <button
+                            id="sendMessageButton"
+                            class="btn btn-primary btn-x1 text-uppercase"
+                            type="submit">
+                        Enviar mensagem
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
     </section>
     <footer>
         <!--Links para redes sociais e copyright-->
