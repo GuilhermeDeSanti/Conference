@@ -19,7 +19,7 @@ const renderParticipants = async () => {
 const response = await fetch(`${urlBase}/conferences/1/participants`);
 const participants = await response.json();
 
-let i = 1;
+let i = 1; 
 for (const participant of participants) {
     strHtml += `
     <tr>

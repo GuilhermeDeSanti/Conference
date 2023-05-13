@@ -161,7 +161,7 @@ window.onload = function () {
         } else {
             // Exibir modal com erro
         }
-    });
+    }); 
 
     const porto = new google.maps.LatLng(41.14961, -8.61099);
 
