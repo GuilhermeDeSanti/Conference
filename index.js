@@ -1,7 +1,7 @@
 var baseUrl = "{{('/conferences/1/speakers')}}";
 
 window.onload = function () {
-    const btnRegister = document.getElementById("btnRegister")
+    const btnRegister = document.getElementById("btnRegister");
     btnRegister.addEventListener("click", function() {
 
 
@@ -18,8 +18,8 @@ window.onload = function () {
             preConfirm: () => {
                 const name = document.getElementById('txtName').value;
                 const email = document.getElementById('txtEmail').value;
-                const url_base = "https://fcawebbook.herokuapp.com";
-                return;
+                const url_Base = "https://gleeful-boba-ce24e0.netlify.app/";
+                // return;
                  fetch(`${url_Base}/conferences/1/participants/${email}`,{
                     headers: { "Content-Type": "application/x-www-form-urlencoded" },
                     method: "POST",
@@ -161,4 +161,32 @@ window.onload = function () {
         } else {
             // Exibir modal com erro
         }
+    });
+
+    const porto = new google.maps.LatLng(41.14961, -8.61099);
+
+    const mapProp = {
+        center: porto,
+        zoom: 12,
+        scrollwheel: false,
+        draggable: false,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    const map = new 
+    google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+    // Janela de informação com infowindow
+    const infowindow = new google.maps.InfoWindow ({
+        content: "É aqui a Wenconference!"
+    });
+
+    const marker = new google.maps.Marker({
+        position: porto,
+        map: map,
+        title: "WenConference"
+    });
+
+    marker.addListener('click', function() {
+        infowindow.open(map, marker);
     });
